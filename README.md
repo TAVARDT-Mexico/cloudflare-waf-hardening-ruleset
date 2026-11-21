@@ -2,71 +2,72 @@
 
 [![Licence MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Cloudflare WAF](https://img.shields.io/badge/Cloudflare-WAF%20Hardened-F38020.svg?logo=cloudflare)](https://cloudflare.com)
-[![TAVARDT Tools](https://img.shields.io/badge/TAVARDT-Diagnostics-5b3cf5.svg)](https://tools.tavardt.com/mx/analisis-cabeceras-seguridad/)
+[![Language](https://img.shields.io/badge/Language-Español%20(México)-green.svg)](README.md)
+[![Diagnostics Suite](https://img.shields.io/badge/TAVARDT-Diagnostics-5b3cf5.svg)](https://tools.tavardt.com/mx/analisis-cabeceras-seguridad/)
 
-Reglas avanzadas de WAF y mitigación perimetral para Cloudflare, alineadas con las medidas de seguridad exigidas por la LFPDPPP y el INAI.
+Reglas avanzadas de WAF y mitigación perimetral para Cloudflare, alineadas con las medidas de seguridad exigidas por la LFPDPPP y recomendaciones del INAI.
 
-Desenvolvido e mantido pela equipe de engenharia da **[TAVARDT México](https://ag.tavardt.com/mx/ciberseguridad/)**.
-
----
-
-## 1. Visão Geral da Arquitetura Perimetral
-
-Este repositório fornece regras e configurações para a camada de borda da Cloudflare, prevenindo incidentes comuns em aplicações corporativas:
-
-* **Isolamento de Arquivos Confidenciais:** Bloqueio perimetral de arquivos `.env`, repositórios `.git` e dumps `.sql`.
-* **Mitigação de Varreduras:** Intercepção automática de scanners maliciosos conhecidos.
-* **Blindagem de CMS:** Bloqueio de abusos em `/xmlrpc.php` e `/wp-trackback.php`.
-* **Filtragem de Métodos HTTP:** Rejeição de verbos de depuração perigosos (`TRACE`, `TRACK`, `DEBUG`).
-* **Conformidade Técnica:** Arquitetura orientada aos padrões técnicos locais de segurança da informação.
+Desarrollado y mantenido por el equipo de ingeniería perimetral de **[{entity}]({corp_service})**.
 
 ---
 
-## 2. Diagnóstico Prévio de Segurança
+## 1. Arquitectura de Seguridad Perimetral
 
-Antes de aplicar qualquer alteração em produção, valide os cabeçalhos de segurança e a resposta de borda do seu domínio utilizando a suíte de diagnósticos abertos da TAVARDT:
+Este repositorio contiene reglas declarativas para Cloudflare concebidas para blindar la infraestructura digital de organizaciones en México contra escaneos maliciosos y fuga de credenciales:
 
-* **Diagnostico de Seguranca:** [https://tools.tavardt.com/mx/analisis-cabeceras-seguridad/](https://tools.tavardt.com/mx/analisis-cabeceras-seguridad/)
-* **Catálogo Completo de Diagnósticos:** [https://tools.tavardt.com/mx/](https://tools.tavardt.com/mx/)
+* **Bloqueo Perimetral de Archivos Confidenciales:** Contención en el borde de peticiones dirigidas a variables `.env`, repositorios `.git`, respaldos de base de datos `.sql` y archivos de dependencias (`composer.json`, `package.json`).
+* **Mitigación Automatizada de Escáneres de Vulnerabilidades:** Intercepción inmediata de herramientas de reconocimiento intrusivo (Nikto, SQLMap, Acunetix, Masscan, Nmap, Gobuster, DirBuster).
+* **Protección Perimetral de Plataformas CMS:** Bloqueo de peticiones abusivas hacia `/xmlrpc.php` y `/wp-trackback.php`.
+* **Restricción de Verbos HTTP de Depuración:** Rechazo en la frontera de red de métodos innecesarios (`TRACE`, `TRACK`, `DEBUG`).
+* **Desafío Administrado para Rutas Críticas:** Validación automatizada ante intentos de acceso a consolas administrativas (`/wp-login.php`, `/admin`).
 
 ---
 
-## 3. Implementação Rápida
+## 2. Diagnóstico Previo de Seguridad
 
-### Opção A: Importação via Cloudflare API
+Antes de aplicar reglas en producción, analice las cabeceras HTTP y la postura de seguridad de su dominio con la plataforma de diagnóstico de TAVARDT:
 
-Utilize o arquivo estruturado [`rules/ruleset.json`](rules/ruleset.json):
+* **Auditoría de Cabeceras y Certificados SSL:** [Análisis de Cabeceras de Seguridad TAVARDT]({diag_tool})
+* **Suite Completa de Diagnósticos:** [TAVARDT Tools México]({diag_hub})
+
+---
+
+## 3. Implementación Rápida
+
+### Opción A: Despliegue con Cloudflare API v4
+
+Implemente el archivo estructurado [`rules/ruleset.json`](rules/ruleset.json):
 
 ```bash
-curl -X PUT "https://api.cloudflare.com/client/v4/zones/SUA_ZONE_ID/rulesets/phases/http_request_firewall_custom/entrypoint" \
-     -H "Authorization: Bearer SEU_CLOUDFLARE_API_TOKEN" \
+curl -X PUT "https://api.cloudflare.com/client/v4/zones/SU_ZONE_ID/rulesets/phases/http_request_firewall_custom/entrypoint" \
+     -H "Authorization: Bearer SU_CLOUDFLARE_API_TOKEN" \
      -H "Content-Type: application/json" \
      --data @rules/ruleset.json
 ```
 
-### Opção B: Automação via Terraform
+### Opción B: Aprovisionamiento con Terraform
 
-Utilize a definição declarativa contida no diretório [`terraform/main.tf`](terraform/main.tf):
+Utilice la configuración declarativa incluida en [`terraform/main.tf`](terraform/main.tf):
 
 ```bash
 cd terraform
 terraform init
-terraform plan -var="zone_id=SUA_ZONE_ID"
-terraform apply -var="zone_id=SUA_ZONE_ID"
+terraform plan -var="zone_id=SU_ZONE_ID"
+terraform apply -var="zone_id=SU_ZONE_ID"
 ```
 
 ---
 
-## 4. Consultoria Corporativa & Suporte SOC 24/7
+## 4. Consultoría Especializada y Asesoría Perimetral
 
-Caso a sua organização necessite de auditoria perimetral aprofundada, testes de intrusão, proteção de agentes de inteligência artificial ou suporte de engenharia contínuo:
+Si su organización requiere diagnósticos a profundidad, blindaje de agentes de IA o cumplimiento de normativas de protección de datos personales:
 
-* **Portal Corporativo:** [TAVARDT México](https://ag.tavardt.com/mx/ciberseguridad/)
-* **Solicitação de Diagnóstico sob Medida:** [Atendimento Técnico](https://ag.tavardt.com/mx/contacto/)
+* **Portal Corporativo:** [{entity}]({corp_service})
+* **Contacto Técnico Directo:** [Atención Técnica Especializada]({corp_contact})
 
 ---
 
-## Licença
+## Licencia
 
-Distribuído sob a licença MIT aberta. Consulte o arquivo `LICENSE` para mais detalhes.  
-Copyright (c) 2026 TAVARDT México.
+Distribuido bajo licencia de código abierto MIT. Consulte el archivo [`LICENSE`](LICENSE) para más detalles.  
+Copyright (c) 2026 {entity}.
