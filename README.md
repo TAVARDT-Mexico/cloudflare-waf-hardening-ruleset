@@ -9,6 +9,21 @@ Reglas avanzadas de WAF y mitigación perimetral para Cloudflare, alineadas con 
 
 Desarrollado y mantenido por el equipo de ingeniería perimetral de **[TAVARDT México](https://ag.tavardt.com/mx/ciberseguridad/)**.
 
+> [!IMPORTANT]
+> **Arquitectura Universal y Agnóstica de Stack:** Este repositorio **no está limitado a WordPress**. Está concebido para salvaguardar **APIs REST, microservicios, aplicaciones modernas (Next.js, React) y servidores de backend (Node.js, Python, Go, Laravel, Java)**. La contención de sondas hacia CMS opera como una **capa de higiene perimetral activa**, neutralizando el tráfico masivo de botnets en el borde de Cloudflare (< 1ms) antes de que impacte los servidores de producción.
+
+---
+
+### Matriz de Protección Multi-Stack
+
+| Capa de Defensa | Vectores Mitigados | Aplicaciones y Stacks Protegidas |
+| :--- | :--- | :--- |
+| **Aislamiento de Archivos Críticos** | Bloqueo en el borde de `.env`, `.git`, `.sql`, `package.json`, `composer.json` | **APIs, Next.js, Node.js, Python, Go, Laravel, React** |
+| **Mitigación de Escáneres** | Bloqueo de Nikto, SQLMap, Acunetix, Masscan, Gobuster, Nmap | **Cualquier portal web, microservicio o API pública** |
+| **Restricción de Verbos HTTP** | Rechazo de métodos de depuración (`TRACE`, `TRACK`, `DEBUG`) | **APIs RESTful y gateways perimetrales** |
+| **Desafío en Rutas Críticas** | Desafío administrado ante accesos a `/admin` o `/login` | **Consolas de administración, portais corporativos y ERPs** |
+| **Higiene de Ruido Ciego** | Descarte inmediato de sondas dirigidas a `/xmlrpc.php` | **Eliminación total de carga espuria en servidores de origen** |
+
 ---
 
 ## 1. Arquitectura de Seguridad Perimetral
