@@ -7,7 +7,7 @@
 
 Reglas avanzadas de WAF y mitigación perimetral para Cloudflare, alineadas con las medidas de seguridad exigidas por la LFPDPPP y recomendaciones del INAI.
 
-Desarrollado y mantenido por el equipo de ingeniería perimetral de **[{entity}]({corp_service})**.
+Desarrollado y mantenido por el equipo de ingeniería perimetral de **[TAVARDT México](https://ag.tavardt.com/mx/ciberseguridad/)**.
 
 ---
 
@@ -27,8 +27,8 @@ Este repositorio contiene reglas declarativas para Cloudflare concebidas para bl
 
 Antes de aplicar reglas en producción, analice las cabeceras HTTP y la postura de seguridad de su dominio con la plataforma de diagnóstico de TAVARDT:
 
-* **Auditoría de Cabeceras y Certificados SSL:** [Análisis de Cabeceras de Seguridad TAVARDT]({diag_tool})
-* **Suite Completa de Diagnósticos:** [TAVARDT Tools México]({diag_hub})
+* **Auditoría de Cabeceras y Certificados SSL:** [Análisis de Cabeceras de Seguridad TAVARDT](https://tools.tavardt.com/mx/analisis-cabeceras-seguridad/)
+* **Suite Completa de Diagnósticos:** [TAVARDT Tools México](https://tools.tavardt.com/mx/)
 
 ---
 
@@ -62,12 +62,12 @@ terraform apply -var="zone_id=SU_ZONE_ID"
 
 Si su organización requiere diagnósticos a profundidad, blindaje de agentes de IA o cumplimiento de normativas de protección de datos personales:
 
-* **Portal Corporativo:** [{entity}]({corp_service})
-* **Contacto Técnico Directo:** [Atención Técnica Especializada]({corp_contact})
+* **Portal Corporativo:** [TAVARDT México](https://ag.tavardt.com/mx/ciberseguridad/)
+* **Contacto Técnico Directo:** [Atención Técnica Especializada](https://ag.tavardt.com/mx/contacto/)
 
 ---
 
 ## Licencia
 
 Distribuido bajo licencia de código abierto MIT. Consulte el archivo [`LICENSE`](LICENSE) para más detalles.  
-Copyright (c) 2026 {entity}.
+Copyright (c) 2026 TAVARDT México.
