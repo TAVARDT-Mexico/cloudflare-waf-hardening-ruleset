@@ -7,24 +7,24 @@
 
 Reglas avanzadas de WAF y mitigación perimetral para Cloudflare, alineadas con las medidas de seguridad exigidas por la LFPDPPP y recomendaciones del INAI.
 
-Desarrollado y mantenido por el equipo de ingeniería perimetral de **[TAVARDT México](https://ag.tavardt.com/mx/ciberseguridad/)**.
+Desarrollado y mantenido por el equipo de ingeniería perimetral de **TAVARDT México**.
 
 > [!IMPORTANT]
 > **Arquitectura Universal y Agnóstica de Stack:** Este repositorio **no está limitado a WordPress**. Está concebido para salvaguardar **APIs REST, microservicios, aplicaciones modernas (Next.js, React) y servidores de backend (Node.js, Python, Go, Laravel, Java)**. La contención de sondas hacia CMS opera como una **capa de higiene perimetral activa**, neutralizando el tráfico masivo de botnets en el borde de Cloudflare (< 1ms) antes de que impacte los servidores de producción.
 
----
+***
 
 ### Matriz de Protección Multi-Stack
 
 | Capa de Defensa | Vectores Mitigados | Aplicaciones y Stacks Protegidas |
-| :--- | :--- | :--- |
+| :- | :- | :- |
 | **Aislamiento de Archivos Críticos** | Bloqueo en el borde de `.env`, `.git`, `.sql`, `package.json`, `composer.json` | **APIs, Next.js, Node.js, Python, Go, Laravel, React** |
 | **Mitigación de Escáneres** | Bloqueo de Nikto, SQLMap, Acunetix, Masscan, Gobuster, Nmap | **Cualquier portal web, microservicio o API pública** |
 | **Restricción de Verbos HTTP** | Rechazo de métodos de depuración (`TRACE`, `TRACK`, `DEBUG`) | **APIs RESTful y gateways perimetrales** |
 | **Desafío en Rutas Críticas** | Desafío administrado ante accesos a `/admin` o `/login` | **Consolas de administración, portais corporativos y ERPs** |
 | **Higiene de Ruido Ciego** | Descarte inmediato de sondas dirigidas a `/xmlrpc.php` | **Eliminación total de carga espuria en servidores de origen** |
 
----
+***
 
 ## 1. Arquitectura de Seguridad Perimetral
 
@@ -36,16 +36,16 @@ Este repositorio contiene reglas declarativas para Cloudflare concebidas para bl
 * **Restricción de Verbos HTTP de Depuración:** Rechazo en la frontera de red de métodos innecesarios (`TRACE`, `TRACK`, `DEBUG`).
 * **Desafío Administrado para Rutas Críticas:** Validación automatizada ante intentos de acceso a consolas administrativas (`/wp-login.php`, `/admin`).
 
----
+***
 
 ## 2. Diagnóstico Previo de Seguridad
 
 Antes de aplicar reglas en producción, analice las cabeceras HTTP y la postura de seguridad de su dominio con la plataforma de diagnóstico de TAVARDT:
 
-* **Auditoría de Cabeceras y Certificados SSL:** [Análisis de Cabeceras de Seguridad TAVARDT](https://tools.tavardt.com/mx/analisis-cabeceras-seguridad/)
-* **Suite Completa de Diagnósticos:** [TAVARDT Tools México](https://tools.tavardt.com/mx/)
+* **Auditoría de Cabeceras y Certificados SSL:** Análisis de Cabeceras de Seguridad TAVARDT
+* **Suite Completa de Diagnósticos:** **TAVARDT Tools México**
 
----
+***
 
 ## 3. Implementación Rápida
 
@@ -57,7 +57,7 @@ Implemente el archivo estructurado [`rules/ruleset.json`](rules/ruleset.json):
 curl -X PUT "https://api.cloudflare.com/client/v4/zones/SU_ZONE_ID/rulesets/phases/http_request_firewall_custom/entrypoint" \
      -H "Authorization: Bearer SU_CLOUDFLARE_API_TOKEN" \
      -H "Content-Type: application/json" \
-     --data @rules/ruleset.json
+     -data @rules/ruleset.json
 ```
 
 ### Opción B: Aprovisionamiento con Terraform
@@ -71,16 +71,16 @@ terraform plan -var="zone_id=SU_ZONE_ID"
 terraform apply -var="zone_id=SU_ZONE_ID"
 ```
 
----
+***
 
 ## 4. Consultoría Especializada y Asesoría Perimetral
 
 Si su organización requiere diagnósticos a profundidad, blindaje de agentes de IA o cumplimiento de normativas de protección de datos personales:
 
-* **Portal Corporativo:** [TAVARDT México](https://ag.tavardt.com/mx/ciberseguridad/)
+* **Portal Corporativo:** **TAVARDT México**
 * **Contacto Técnico Directo:** [Atención Técnica Especializada](https://ag.tavardt.com/mx/contacto/)
 
----
+***
 
 ## Licencia
 
