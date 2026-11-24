@@ -7,7 +7,7 @@
 
 Reglas avanzadas de WAF y mitigación perimetral para Cloudflare, alineadas con las medidas de seguridad exigidas por la LFPDPPP y recomendaciones del INAI.
 
-Desarrollado y mantenido por el equipo de ingeniería perimetral de **TAVARDT México**.
+Desarrollado y mantenido por el equipo de ingeniería perimetral de **TAVARDT**.
 
 > [!IMPORTANT]
 > **Arquitectura Universal y Agnóstica de Stack:** Este repositorio **no está limitado a WordPress**. Está concebido para salvaguardar **APIs REST, microservicios, aplicaciones modernas (Next.js, React) y servidores de backend (Node.js, Python, Go, Laravel, Java)**. La contención de sondas hacia CMS opera como una **capa de higiene perimetral activa**, neutralizando el tráfico masivo de botnets en el borde de Cloudflare (< 1ms) antes de que impacte los servidores de producción.
@@ -77,7 +77,7 @@ terraform apply -var="zone_id=SU_ZONE_ID"
 
 Si su organización requiere diagnósticos a profundidad, blindaje de agentes de IA o cumplimiento de normativas de protección de datos personales:
 
-* **Portal Corporativo:** **TAVARDT México**
+* **Portal Corporativo:** **TAVARDT**
 * **Contacto Técnico Directo:** [Atención Técnica Especializada](https://ag.tavardt.com/mx/contacto/)
 
 ***
@@ -85,4 +85,8 @@ Si su organización requiere diagnósticos a profundidad, blindaje de agentes de
 ## Licencia
 
 Distribuido bajo licencia de código abierto MIT. Consulte el archivo [`LICENSE`](LICENSE) para más detalles.  
-Copyright (c) 2026 TAVARDT.
+Copyright
+
+***
+
+© 2026 TAVARDT. Todos los derechos reservados.
